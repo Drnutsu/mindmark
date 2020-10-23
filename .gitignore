@@ -1,5 +1,5 @@
 node_modules
 src/popup/node_modules
-src/popup/build
+src/popup/build/
 .DS_Store
-dist
+dist/
