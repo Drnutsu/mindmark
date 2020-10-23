@@ -3,3 +3,4 @@ src/popup/node_modules
 src/popup/build/
 .DS_Store
 dist/
+yarn-error.log
