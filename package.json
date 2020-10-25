@@ -5,6 +5,7 @@
   "author": "Nutsu <dentistnut@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "setup": "yarn install && cd src/popup/ && yarn install",
     "build:contentscript-background": "NODE_ENV=production webpack --config webpack.config.js",
     "build": "npm-run-all build:*",
     "watch:contentscript-background": "NODE_ENV=development webpack --config webpack.config.js -w",

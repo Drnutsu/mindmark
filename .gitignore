@@ -1,6 +1,5 @@
-node_modules
-src/popup/node_modules
-src/popup/build/
+node_modules/
+build/
 .DS_Store
 dist/
 yarn-error.log
