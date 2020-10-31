@@ -60,4 +60,12 @@ export default class Graph {
     // add edge
     this.graph.addLink(origin, target)
   }
+
+  completeBackLink(origin: string, target: string) {
+    if (!this.graph) throw Error('Please initialize the graph.')
+    if (!origin || !target) throw Error('payload is not included all required fields')
+    // TODO: need to find function to edit, relation payload on the created link.
+    // add edge
+    this.graph.addLink(origin, target)
+  }
 }
