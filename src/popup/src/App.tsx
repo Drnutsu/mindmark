@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactFlow from 'react-flow-renderer'
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.css'
 
 import { useGraph } from './hooks/use-graph'
 import logo from './logo.svg'
@@ -45,14 +45,34 @@ const openWindow = () => {
 }
 
 function App() {
-  const { addKeyword, submitURL } = useGraph()
+  const { addKeyword, submitURL, addLink, printGraph } = useGraph()
   return (
     <div>
       <div style={{ height: 300 }}>
         <ReactFlow elements={elements} />
       </div>
-      <button>ADD KEYWORD</button>
-      <button>ADD LINK</button>
+      <button
+        onClick={() => {
+          addKeyword('test')
+          addKeyword('test2')
+        }}
+      >
+        ADD KEYWORD
+      </button>
+      <button
+        onClick={() => {
+          addLink('test', 'test2')
+        }}
+      >
+        ADD LINK
+      </button>
+      <button
+        onClick={() => {
+          console.log(' graph: ', printGraph()?.toString())
+        }}
+      >
+        Check Result
+      </button>
     </div>
   )
 }
