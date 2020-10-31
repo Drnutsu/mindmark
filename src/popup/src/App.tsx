@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactFlow from 'react-flow-renderer'
-
+import 'antd/dist/antd.css';
 import logo from './logo.svg'
 import './App.css'
 
