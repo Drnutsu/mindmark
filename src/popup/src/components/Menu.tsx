@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'antd'
 import AddNewKeyword from './AddNewKeyword'
+import AddMoreUrl from './AddMoreUrl'
 
 const useKeyword = () => {
   const getKeyword = () => {
@@ -65,9 +66,7 @@ const Menu = () => {
   }
 
   if(keyword) {
-    return <div> {keyword} with {url}
-    <Button onClick={handleStorage}>clear</Button>
-    </div>
+    return <AddMoreUrl handleStorage={handleStorage} keyword={keyword} url={url}/>
   }
 
   return <div>
