@@ -2,11 +2,13 @@ import React, { createContext, useContext, useEffect, useCallback, useState, Rea
 import Graph from '../utils/graph'
 
 export interface GraphContextType {
-  addKeyword: () => void
+  addKeyword: (keyword: string) => void
   submitURL: (keyword: string, url: string) => void
   submitBrief: (keyword: string, brief: string) => void
   addLink: (origin: string, target: string) => void
   onCompleteLink: (origin: string, target: string) => void
+  // TODO: need to check any to graph type.
+  printGraph: () => any
 }
 
 const GraphContext = createContext<GraphContextType>({
@@ -14,7 +16,8 @@ const GraphContext = createContext<GraphContextType>({
   submitURL: () => {},
   submitBrief: () => {},
   addLink: () => {},
-  onCompleteLink: () => {}
+  onCompleteLink: () => {},
+  printGraph: () => {}
 })
 
 function GraphProvider({ children }: { children: ReactNode }) {
@@ -27,8 +30,16 @@ function GraphProvider({ children }: { children: ReactNode }) {
     setGraph(graph)
   }, [])
 
+  const printGraph = useCallback(() => {
+    // [TODO] change to antd modal alert.
+    if (!graph) {
+      alert('graph is not defined, please try again')
+    }
+    return graph?.getGraph()
+  }, [])
+
   const addKeyword = useCallback(
-    () => (keyword: string) => {
+    (keyword: string) => {
       // [TODO] change to antd modal alert.
       if (!graph) {
         alert('graph is not defined, please try again')
@@ -86,7 +97,8 @@ function GraphProvider({ children }: { children: ReactNode }) {
     submitURL,
     submitBrief,
     addLink,
-    onCompleteLink
+    onCompleteLink,
+    printGraph
   }
 
   return <GraphContext.Provider value={context}>{children}</GraphContext.Provider>
