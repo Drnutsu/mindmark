@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactFlow from 'react-flow-renderer'
 import 'antd/dist/antd.css';
+
+import { useGraph } from './hooks/use-graph'
+import logo from './logo.svg'
 import './App.css'
 import Menu from './components/Menu'
 
@@ -42,13 +45,14 @@ const openWindow = () => {
 }
 
 function App() {
+  const { addKeyword, submitURL } = useGraph()
   return (
     <div>
       <div style={{ height: 300 }}>
         <ReactFlow elements={elements} />
       </div>
-      <button onClick={openWindow}>OPEN WINDOW</button>
-      <Menu />
+      <button>ADD KEYWORD</button>
+      <button>ADD LINK</button>
     </div>
   )
 }
