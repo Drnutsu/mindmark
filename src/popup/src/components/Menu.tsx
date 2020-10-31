@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import { Button } from 'antd'
 import AddNewKeyword from './AddNewKeyword'
 
@@ -47,10 +47,22 @@ const useAddingKeyword = () => {
 
 }
 
+const initialState = {keyword: '', url: '', isAddKeyword: false};
+
+function reducer(state: any, action:any) {
+  switch (action.type) {
+    case 'clearKeyword':
+      return initialState;
+    default:
+      throw new Error();
+  }
+}
+
 const Menu = () => {
   const {keyword, setKeyword} = useKeyword()
   const {url, handleSaveBookmark} = useGetUrl()
   const {isAddKeyword, setIsAddKeyword} = useAddingKeyword()
+  const [state, dispatch] = useReducer<any>(reducer, initialState);
 
   const handleAddKeyword = () => {
     setIsAddKeyword(true)
@@ -60,8 +72,7 @@ const Menu = () => {
   
   const handleStorage = () => {
     window.localStorage.clear()
-    setIsAddKeyword(false)
-    setKeyword('')
+    dispatch({type: 'clearKeyword'})
   }
 
   if(keyword) {
