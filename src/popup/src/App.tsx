@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactFlow from 'react-flow-renderer'
 import 'antd/dist/antd.css';
-import logo from './logo.svg'
 import './App.css'
+import Menu from './components/Menu'
 
 const elements = [
   {
@@ -48,6 +48,7 @@ function App() {
         <ReactFlow elements={elements} />
       </div>
       <button onClick={openWindow}>OPEN WINDOW</button>
+      <Menu />
     </div>
   )
 }
